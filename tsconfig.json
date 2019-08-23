@@ -15,7 +15,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nrwl-nx-react/home": ["libs/home/src/index.ts"],
+      "@nrwl-nx-react/gifs": ["libs/gifs/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

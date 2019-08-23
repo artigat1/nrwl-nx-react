@@ -9,9 +9,19 @@
   },
   "projects": {
     "tester-1": {
+      "implicitDependencies": ["api"],
       "tags": []
     },
     "tester-1-e2e": {
+      "tags": []
+    },
+    "home": {
+      "tags": []
+    },
+    "gifs": {
+      "tags": []
+    },
+    "api": {
       "tags": []
     }
   }
