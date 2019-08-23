@@ -14,20 +14,31 @@ export const Gifs = (props: GifsProps) => {
 
   const getFetchUrl = useCallback(
     () =>
-      `https://api.giphy.com/v1/gifs/search?api_key=${props.apiKey}&q=${query}`,
+      // Return `null` if query is empty
+      query
+        ? `https://api.giphy.com/v1/gifs/search?api_key=${
+          props.apiKey
+        }&q=${query}`
+        : null,
     [query]
   );
 
   useEffect(() => {
     async function fetchData() {
-      const result = await axios(getFetchUrl());
-      setGifs(
-        result.data.data.map(x => ({
-          id: x.id,
-          preview: x.images.preview_gif,
-          url: x.url
-        }))
-      );
+      const url = getFetchUrl();
+      if (url) {
+        const result = await axios(url);
+        setGifs(
+          result.data.data.map(x => ({
+            id: x.id,
+            preview: x.images.preview_gif,
+            url: x.url
+          }))
+        );
+      }else {
+        // Skip API request if url not found
+        setGifs([]);
+      }
     }
 
     fetchData();
